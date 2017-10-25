@@ -7,7 +7,9 @@ class User
   end
 
   def learn(joke)
+    unless @jokes.include?(joke)
     @jokes << joke
+    end
   end
 
   def tell(user, joke)
@@ -23,7 +25,9 @@ class User
   def learn_routine(file = "./jokes.csv")
     jokes = CSV.open file, headers: true
     jokes.map do |joke|
-      @jokes << joke.to_h
+      unless @jokes.include?(joke)
+      @jokes << joke
+      end
     end
   end
 end

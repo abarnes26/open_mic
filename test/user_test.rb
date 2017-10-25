@@ -76,4 +76,17 @@ class UserTest < Minitest::Test
     assert_equal 100, casey.jokes.count
   end
 
+  def test_user_cannot_learn_the_same_joke_twice
+    casey = User.new("Casey")
+    joke_1 = Joke.new({id: 1,
+                 question: "Why did the strawberry cross the road?",
+                   answer: "Because his mother was in a jam."})
+    casey.learn(joke_1)
+    casey.learn(joke_1)
+    casey.learn_routine
+    casey.learn_routine
+
+    assert_equal 101, casey.jokes.count
+  end
+
 end
