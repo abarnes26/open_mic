@@ -1,3 +1,6 @@
+require 'pry'
+require 'csv'
+
 class Joke
 
   attr_reader :id, :question, :answer

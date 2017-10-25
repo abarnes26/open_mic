@@ -20,4 +20,10 @@ class User
     end
   end
 
+  def learn_routine(file = "./jokes.csv")
+    jokes = CSV.open file, headers: true
+    jokes.map do |joke|
+      @jokes << joke.to_h
+    end
+  end
 end
